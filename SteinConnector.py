@@ -127,7 +127,7 @@ if __name__ == '__main__':
     con = sqlite3.connect(config['database']['filename'])
     con.row_factory = dict_factory
 
-    uebung = config['stein.app']['uebung'] == 'true'
+    uebung = config['stein.app']['uebung'] != 'false'
     if uebung:
         logging.warning("ÜBUNGSMODUS AKTIV!")
     steinapp = SteinAPI(config['stein.app']['organisation'], uebung)
