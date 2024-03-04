@@ -22,4 +22,4 @@ Die benötigten Module stehen in der Datei `requirements.txt` und können mit fo
 ``pip3 install -r requirements.txt``
 
 ## Starten
-`./SteinConnector.py`
+`./StonedHermine.py`
