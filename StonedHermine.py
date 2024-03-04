@@ -68,9 +68,9 @@ def create_message(asset, diffs: [Diff]) -> str:
     for diff in diffs:
         if diff.field == 'status':
             changes += 'Status: {} (war: {})'.format(map_status(diff.new_val), map_status(diff.old_val))
-        elif diff.new_val == 'comment':
+        elif diff.field == 'comment':
             changes += diff.new_val
-        elif diff.new_val == 'operationReservation':
+        elif diff.field == 'operationReservation':
             changes += 'Steht {}unter Einsatzvorbehalt'.format(('' if diff.new_val else "nicht mehr "))
         changes += '\n'
     return '{} ({}):\n------------------\n{}'.format(asset['label'], asset['name'], changes)
