@@ -1,0 +1,4 @@
+requests
+pyliquibase
+pycryptodome
+python-socketio
