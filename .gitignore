@@ -1,0 +1,5 @@
+.venv
+config.ini
+*.log
+.idea
+steinapp.db

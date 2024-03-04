@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="schema-1.0" author="Michael Kabdebo">
+        <createTable tableName="assets">
+            <column name="id" type="integer">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_assets_id"/>
+            </column>
+            <column name="buId" type="integer"/>
+            <column name="groupId" type="integer"/>
+            <column name="label" type="varchar(255)"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="status" type="varchar(20)"/>
+            <column name="comment" type="varchar(512)"/>
+            <column name="category" type="varchar(255)"/>
+            <column name="deleted" type="boolean"/>
+            <column name="created" type="datetime"/>
+            <column name="lastModifiedBy" type="varchar(128)"/>
+            <column name="lastModified" type="datetime"/>
+            <column name="radioName" type="varchar(128)"/>
+            <column name="issi" type="varchar(10)"/>
+            <column name="sortOrder" type="integer"/>
+            <column name="operationReservation" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
