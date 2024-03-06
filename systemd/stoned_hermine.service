@@ -1,0 +1,16 @@
+[Unit]
+Description=Stoned Hermine
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/opt/stoned_hermine/StonedHermine.py
+WorkingDirectory=/opt/stoned_hermine
+User=stoned_hermine
+
+Restart=on-failure
+RestartSec=10s
+StartLimitBurst=10
+
+[Install]
+WantedBy=multi-user.target
