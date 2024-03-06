@@ -23,3 +23,7 @@ Die benötigten Module stehen in der Datei `requirements.txt` und können mit fo
 
 ## Starten
 `./StonedHermine.py`
+
+## Als Systemd Service einbinden
+Im Ordner `systemd` befindet sich eine Service-Datei, um "Stoned Hermine" als Service in systemd einzubinden.
+Hier muss man ggf. noch den System-User und den Pfad zu Anwendung anpassen.
