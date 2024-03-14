@@ -239,6 +239,7 @@ class StashCatClient:
             "type": "text",
             "verification": "",
             "encrypted": True,
+            "metainfo": '{"v": 1, "style": "md"}'
         }
 
         if location:
