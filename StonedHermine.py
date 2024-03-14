@@ -91,9 +91,18 @@ def map_status(status: str) -> str:
     return 'unbekannt'
 
 
-def notify(asset: dict, diff: dict):
+def notify(asset: dict, diffs: dict):
+    contains_notifiable_changes = False
+    for diff in diffs:
+        contains_notifiable_changes = diff.field in ('status', 'comment', 'operationReservation')
+        if contains_notifiable_changes:
+            break
+
+    if not contains_notifiable_changes:
+        return
+
     logging.info("notify about changes on %s(%s): %s", asset["label"], asset["name"], str(diff))
-    message = create_message(asset, diff)
+    message = create_message(asset, diffs)
     logging.debug('message to hermine: "{}"', message)
     hermine.send_msg_to_channel(hermine_channel, message)
 
