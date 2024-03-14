@@ -65,28 +65,29 @@ def create(asset: dict):
 
 def create_message(asset, diffs: [Diff]) -> str:
     changes = ""
+    asset_full_name = '{}'.format(asset['label'],) if asset['name'] is None else '{} ({})'.format(asset['label'], asset['name'])
     for diff in diffs:
         if diff.field == 'status':
-            changes += 'Status: {} (war: {})'.format(map_status(diff.new_val), map_status(diff.old_val))
+            changes += '{} (war: {})'.format(map_status(diff.new_val), map_status(diff.old_val))
         elif diff.field == 'comment':
-            changes += diff.new_val
+            changes += '\u270E {}'.format(diff.new_val)
         elif diff.field == 'operationReservation':
-            changes += 'Steht {}unter Einsatzvorbehalt'.format(('' if diff.new_val else "nicht mehr "))
+            changes += '\u27A0 Steht {}unter Einsatzvorbehalt'.format(('' if diff.new_val else "nicht mehr "))
         changes += '\n'
-    return '{} ({}):\n------------------\n{}'.format(asset['label'], asset['name'], changes)
+    return '**\u2709 {}**:\n- - - - - - - - -\n{}- - - - - - - - -\n{}'.format(asset_full_name, changes, asset['lastModifiedBy'])
 
 
 def map_status(status: str) -> str:
     if status == 'ready':
-        return 'einsatzbereit'
+        return '\u2705 einsatzbereit'
     if status == 'notready':
-        return 'nicht einsatzbereit'
+        return '\u26D4 nicht einsatzbereit'
     if status == 'semiready':
-        return 'bedingt einsatzbereit'
+        return '\u2757 bedingt einsatzbereit'
     if status == 'maint':
-        return 'In der Werkstatt'
+        return '\u274C In der Werkstatt'
     if status == 'inuse':
-        return 'im Einsatz'
+        return '\u26A0 im Einsatz'
     return 'unbekannt'
 
 
