@@ -78,7 +78,7 @@ class SteinAPI:
         self.apiurl = self.baseurl + "/api/api"
 
         r = requests.get(self.baseurl)
-        m = re.search(r'<script type=\"module\" crossorigin src=\"([\w\/\.\-]+)\"></script>', r.text)
+        m = re.search(r'<script .*src="(/assets/index-.*)">', r.text)
         if m:
             js = m.group(1)
             j = requests.get(self.baseurl + "/" + js)
